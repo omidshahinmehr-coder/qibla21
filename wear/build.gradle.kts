@@ -61,7 +61,7 @@ dependencies {
     implementation("androidx.compose.ui:ui")
     implementation("androidx.compose.ui:ui-graphics")
     implementation("androidx.compose.foundation:foundation")
-    implementation("androidx.compose.material:material-icons-core:1.6.8")
+    implementation("androidx.compose.material:material-icons-extended:1.6.8")
 
     // Wear-specific Compose widgets (Text, Chip, CircularProgressIndicator, etc.) styled for
     // round/square watch screens.
