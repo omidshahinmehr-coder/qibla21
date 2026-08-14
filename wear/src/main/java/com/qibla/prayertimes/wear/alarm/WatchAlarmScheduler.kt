@@ -71,17 +71,19 @@ object WatchAlarmScheduler {
         WatchAdhanPrayer.entries.forEach { cancel(context, it) }
     }
 
-    private fun parseToday(hhmm: String): Calendar? = try {
-        val sdf = SimpleDateFormat("HH:mm", Locale.US)
-        val parsed = sdf.parse(hhmm) ?: return null
-        val parsedCal = Calendar.getInstance().apply { time = parsed }
-        Calendar.getInstance().apply {
-            set(Calendar.HOUR_OF_DAY, parsedCal.get(Calendar.HOUR_OF_DAY))
-            set(Calendar.MINUTE, parsedCal.get(Calendar.MINUTE))
-            set(Calendar.SECOND, 0)
-            set(Calendar.MILLISECOND, 0)
+    private fun parseToday(hhmm: String): Calendar? {
+        return try {
+            val sdf = SimpleDateFormat("HH:mm", Locale.US)
+            val parsed = sdf.parse(hhmm) ?: return null
+            val parsedCal = Calendar.getInstance().apply { time = parsed }
+            Calendar.getInstance().apply {
+                set(Calendar.HOUR_OF_DAY, parsedCal.get(Calendar.HOUR_OF_DAY))
+                set(Calendar.MINUTE, parsedCal.get(Calendar.MINUTE))
+                set(Calendar.SECOND, 0)
+                set(Calendar.MILLISECOND, 0)
+            }
+        } catch (e: Exception) {
+            null
         }
-    } catch (e: Exception) {
-        null
     }
 }
